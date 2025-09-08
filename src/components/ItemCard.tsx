@@ -14,6 +14,6 @@ export default function ItemCard() {
   console.log(val_number + 100); // 600.0
 
   return {
-    /* Type additional text here. */
+  
   };
 }
