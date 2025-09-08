@@ -6,8 +6,8 @@ import {
   ActionIcon,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { IconSun, IconMoon, IconBath, IconCurrencyDollar, IconCurrencyBaht } from "@tabler/icons-react";
-import { IconLockDollar} from "@tabler/icons-react";
+import { IconSun, IconMoon,  IconCurrencyBaht } from "@tabler/icons-react";
+//import { IconLockDollar} from "@tabler/icons-react";
 
 interface HeaderComponentProps {
   opened: boolean;
