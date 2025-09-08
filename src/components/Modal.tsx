@@ -1,4 +1,4 @@
-import { useState } from "react";
+/*import { useState } from "react";
 import {
   Modal,
   TextInput,
@@ -23,11 +23,11 @@ export default function AddExpenseModal({}: AddExpenseModalProps) {
   const [amount, setAmount] = useState<string | number>(0);
   const [category, setCategory] = useState<string | null>(null);
 
-  const handleSubmit = () => {};
+  //const handleSubmit = () => {};
 
-  const [fnameerror, setNameError] = useState<string | null>(null);
-  const [amounterror, setAmountError] = useState<string | null>(null);
-  const [categoryerror, setCategoryError] = useState<string | null>(null);  
+  //const [fnameerror, setNameError] = useState<string | null>(null);
+  //const [amounterror, setAmountError] = useState<string | null>(null);
+  //const [categoryerror, setCategoryError] = useState<string | null>(null);  
 
   // หากต้องการแปง type string เป็น type number สามารถดูตัวอย่างนี้ได้
   let val_number: number = Number("500.0");
@@ -57,4 +57,4 @@ export default function AddExpenseModal({}: AddExpenseModalProps) {
   return {
    
   };
-}
+}*/
