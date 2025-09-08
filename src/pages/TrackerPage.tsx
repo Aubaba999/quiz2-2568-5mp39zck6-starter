@@ -20,7 +20,7 @@ export default function ExpenseTracker() {
         Expense Tracker
       </Title>
       <Button>Add Expense Item</Button>
-      {/* Type additional AddExpenseModal here. */}
+      {}
 
       <Divider my="md" />
       {/* Type additional total cost here. */}

@@ -25,6 +25,10 @@ export default function AddExpenseModal({}: AddExpenseModalProps) {
 
   const handleSubmit = () => {};
 
+  const [fnameerror, setNameError] = useState<string | null>(null);
+  const [amounterror, setAmountError] = useState<string | null>(null);
+  const [categoryerror, setCategoryError] = useState<string | null>(null);  
+
   // หากต้องการแปง type string เป็น type number สามารถดูตัวอย่างนี้ได้
   let val_number: number = Number("500.0");
   console.log(val_number + 100); // 600.0
@@ -41,8 +45,16 @@ export default function AddExpenseModal({}: AddExpenseModalProps) {
   }
   const selectCategory = (value: string | null) => {
     setCategory(value);
-  }       
+  }
+  const catagory = ["Food", "Transport", "Entertainment"];
+
+  const computeTotal = (expenses: { amount: number | string }[]) => {
+    return expenses.reduce((total, expense) => {
+      let amountNumber = typeof expense.amount === 'string' ? parseFloat(expense.amount) : expense.amount;
+      return total + (isNaN(amountNumber) ? 0 : amountNumber);
+    }, 0);
+  };
   return {
-    
+   
   };
 }

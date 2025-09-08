@@ -4,7 +4,7 @@ export default function Footer({ year, fullName, studentId }: FooterProps) {
   return (
     <Group p="md" justify="center">
       <Text>
-        Copyright © {year} {fullName} {studentId}
+        Copyright © {year} {fullName} {studentId} All right reserve
       </Text>
     </Group>
   );}
