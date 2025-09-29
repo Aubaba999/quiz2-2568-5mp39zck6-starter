@@ -1,4 +1,4 @@
-/*import { useState } from "react";
+import { useState } from "react";
 import {
   Modal,
   TextInput,
@@ -11,50 +11,65 @@ import {
 type AddExpenseModalProps = {
   opened: boolean;
   onClose: () => void;
-  onAdd: (
-    name: string, 
-    amount: number | string, 
-    category: string
-  ) => void;
+  onAdd: (name: string, amount: number | string, category: string) => void;
 };
 
-export default function AddExpenseModal({}: AddExpenseModalProps) {
+export default function AddExpenseModal({
+  opened,
+  onClose,
+  onAdd,
+}: AddExpenseModalProps) {
   const [name, setName] = useState<string>("");
   const [amount, setAmount] = useState<string | number>(0);
   const [category, setCategory] = useState<string | null>(null);
+  const categories = ["Food", "Transport", "Entertainment"];
 
-  //const handleSubmit = () => {};
+  const handleSubmit = () => {
+    if (!name.trim() || amount == 0 || !category) return;
 
-  //const [fnameerror, setNameError] = useState<string | null>(null);
-  //const [amounterror, setAmountError] = useState<string | null>(null);
-  //const [categoryerror, setCategoryError] = useState<string | null>(null);  
-
-  // หากต้องการแปง type string เป็น type number สามารถดูตัวอย่างนี้ได้
-  let val_number: number = Number("500.0");
-  console.log(val_number + 100); // 600.0
-  
-  const inputName = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setName(event.currentTarget.value);
-  }
-  const selectAmount = (value: number | undefined) => {
-    if (value !== undefined) {
-      setAmount(value);
-    } else {
-      setAmount(0);
-    } 
-  }
-  const selectCategory = (value: string | null) => {
-    setCategory(value);
-  }
-  const catagory = ["Food", "Transport", "Entertainment"];
-
-  const computeTotal = (expenses: { amount: number | string }[]) => {
-    return expenses.reduce((total, expense) => {
-      let amountNumber = typeof expense.amount === 'string' ? parseFloat(expense.amount) : expense.amount;
-      return total + (isNaN(amountNumber) ? 0 : amountNumber);
-    }, 0);
+    onAdd(name, amount, category);
+    setName("");
+    setAmount(0);
+    setCategory(null);
+    onClose();
   };
-  return {
-   
-  };
-}*/
+
+  return (
+    <Modal opened={opened} onClose={onClose} title="Add Expense">
+      <Stack>
+        <TextInput
+          label="Expense Name"
+          withAsterisk
+          description="Expense Name"
+          error={name.trim() == "" ? "Expense name is require" : ""}
+          placeholder="E.g., Coca-Cola"
+          value={name}
+          onChange={(event) => setName(event.currentTarget.value)}
+        />
+
+        <NumberInput
+          label="Amount"
+          withAsterisk
+          description="Amount"
+          clampBehavior="strict"
+          min={0}
+          error={amount == 0 ? "Amount is required" : ""}
+          value={amount}
+          onChange={(event) => setAmount(Number(event))}
+        />
+
+        <Select
+          label="Category"
+          description="Category"
+          placeholder="Select Category"
+          error={!category ? "Category is required" : ""}
+          value={category}
+          data={categories}
+          onChange={(event) => setCategory(event)}
+        />
+
+        <Button onClick={handleSubmit}>Submit</Button>
+      </Stack>
+    </Modal>
+  );
+}

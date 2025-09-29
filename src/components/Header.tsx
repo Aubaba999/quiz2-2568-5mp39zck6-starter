@@ -1,13 +1,11 @@
 import {
-  Burger,
   Text,
   useMantineColorScheme,
   Group,
   ActionIcon,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { IconSun, IconMoon,  IconCurrencyBaht } from "@tabler/icons-react";
-//import { IconLockDollar} from "@tabler/icons-react";
+import { IconSun, IconMoon, IconCurrencyBaht } from "@tabler/icons-react";
 
 interface HeaderComponentProps {
   opened: boolean;
@@ -15,25 +13,16 @@ interface HeaderComponentProps {
 }
 
 export default function HeaderComponent({
-  opened,
-  toggle,
-}: HeaderComponentProps) {
 
+}: HeaderComponentProps) {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  
+
   const isDark = colorScheme === "dark";
-  const isMobile = useMediaQuery("(max-width: 768px)");
-  
+
   return (
     <Group p="md" justify="space-between">
       <Group>
-        {isMobile && (
-          <Burger
-            opened={opened}
-            onClick={toggle}
-            aria-label="Toggle navigation"
-          />
-        )}
+    
         <ActionIcon
           variant="filled"
           color={isDark ? "yellow" : "blue"}
@@ -41,7 +30,7 @@ export default function HeaderComponent({
           size="lg"
           aria-label={isDark ? "Light mode" : "Dark mode"}
         >
-          {isDark ? <IconCurrencyBaht size={20} /> : <IconCurrencyBaht size={20} />}
+          {<IconCurrencyBaht size={20} />}
         </ActionIcon>
         <Text
           size="xl"
